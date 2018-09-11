@@ -1,6 +1,10 @@
 const axios = require('axios')
 
 module.exports = async (pid, token) => {
+  if (!pid) {
+    return 'No Project'
+  }
+
   try {
     const { data } = await axios({
       url: `https://www.toggl.com/api/v8/projects/${pid}`,

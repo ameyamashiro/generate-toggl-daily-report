@@ -4,7 +4,7 @@ module.exports = entries => {
       return a
     }
 
-    const project = c.pid || 'No Project'
+    const project = c.pid || ''
     const desc = c.description || 'No Description'
 
     a[project] = a[project] || {}
