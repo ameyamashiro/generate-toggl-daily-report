@@ -2,7 +2,7 @@
 
 const program = require('commander')
 
-let targetDate
+let targetDate, token
 
 program
   .version('1.0.0')
@@ -10,15 +10,7 @@ program
   .option('-t, --token <token>', 'Token')
   .action(cmd => {
     targetDate = cmd
-
-    if (!program.token && !process.env.DR_TOGGL_TOKEN) {
-      console.error('--token option or DR_TOGGL_TOKEN env is required')
-      console.log('')
-      program.outputHelp()
-      process.exit(1)
-    } else if (!program.token && process.env.DR_TOGGL_TOKEN) {
-      program.token = process.env.DR_TOGGL_TOKEN
-    }
+    token = program.token || process.env.DR_TOGGL_TOKE
   })
 
 program.parse(process.argv)
@@ -30,6 +22,13 @@ if (typeof targetDate === 'undefined') {
   targetDate = `${date.getFullYear()}-${month}-${dateS}`
 }
 
+if (!token) {
+  console.error('--token option or DR_TOGGL_TOKEN env is required')
+  console.log('')
+  program.outputHelp()
+  process.exit(1)
+}
+
 if (!targetDate.match(/[\d]{4}-[\d]{2}-[\d]{2}/)) {
   console.error(`${targetDate} is wrong date format (yyyy-mm-dd)`)
   console.log('')
@@ -37,4 +36,6 @@ if (!targetDate.match(/[\d]{4}-[\d]{2}-[\d]{2}/)) {
   process.exit(1)
 }
 
-require('./daily-report')(targetDate, program.token)
+require('./daily-report')(targetDate, token).catch(e => {
+  throw e
+})
