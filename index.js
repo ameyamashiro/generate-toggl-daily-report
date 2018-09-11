@@ -2,7 +2,7 @@
 
 const program = require('commander')
 
-let targetDate, token
+let targetDate
 
 program
   .version('1.0.0')
@@ -10,10 +10,11 @@ program
   .option('-t, --token <token>', 'Token')
   .action(cmd => {
     targetDate = cmd
-    token = program.token || process.env.DR_TOGGL_TOKE
   })
 
 program.parse(process.argv)
+
+const token = program.token || process.env.DR_TOGGL_TOKEN
 
 if (typeof targetDate === 'undefined') {
   const date = new Date()
