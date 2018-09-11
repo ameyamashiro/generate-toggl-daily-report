@@ -37,6 +37,4 @@ if (!targetDate.match(/[\d]{4}-[\d]{2}-[\d]{2}/)) {
   process.exit(1)
 }
 
-require('./daily-report')(targetDate, program.token).then(output => {
-  console.log(output)
-})
+require('./daily-report')(targetDate, program.token)
