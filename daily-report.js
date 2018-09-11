@@ -18,7 +18,7 @@ module.exports = async (reportDate, token) => {
     })
   )
 
-  const output = formatAsMd(outputObj)
+  const output = await formatAsMd(outputObj)
 
   console.log(output)
 
