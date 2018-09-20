@@ -1,5 +1,6 @@
 const readline = require('readline')
-const makeTaskTextLine = require('./make-task-text-line')
+const makeTaskList = require('./make-task-list')
+const table = require('markdown-table')
 
 module.exports = projects =>
   new Promise(async (resolve, reject) => {
@@ -58,19 +59,23 @@ module.exports = projects =>
         // continued
         if (continued[project]) {
           output += '[継続]\n\n'
-          output += `task|schedule|spent|note\n`
-          output += `:---|---:|---:|:---\n`
-          output += makeTaskTextLine(continued[project])
-          output += `\n`
+
+          output += table([
+            ['task', 'schedule', 'spent', 'note'],
+            ...makeTaskList(continued[project])
+          ])
+          output += `\n\n`
         }
 
         // completed
         if (completed[project]) {
           output += '[完了]\n\n'
-          output += `task|schedule|spent|note\n`
-          output += `:---|---:|---:|:---\n`
-          output += makeTaskTextLine(completed[project])
-          output += `\n`
+
+          output += table([
+            ['task', 'schedule', 'spent', 'note'],
+            ...makeTaskList(completed[project])
+          ])
+          output += `\n\n`
         }
       })
 

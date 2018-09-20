@@ -5,10 +5,6 @@ module.exports = async (cid, token) => {
     return false
   }
 
-  console.log(cid)
-
-  console.log(`https://www.toggl.com/api/v8/clients/${cid}`)
-
   try {
     const { data } = await axios({
       url: `https://www.toggl.com/api/v8/clients/${cid}`,
@@ -18,7 +14,6 @@ module.exports = async (cid, token) => {
         password: 'api_token'
       }
     })
-    console.log(data)
     return data.data
   } catch (e) {
     throw e
