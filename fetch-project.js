@@ -2,7 +2,7 @@ const axios = require('axios')
 
 module.exports = async (pid, token) => {
   if (!pid) {
-    return 'No Project'
+    return false
   }
 
   try {
@@ -14,7 +14,7 @@ module.exports = async (pid, token) => {
         password: 'api_token'
       }
     })
-    return data.data.name
+    return data.data
   } catch (e) {
     throw e
   }
