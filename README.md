@@ -6,22 +6,22 @@ this generates a daily report table for markdown like the follwing.
 ## Project A
 [完了]
 
-task|schedule|spent|note
-:---|---:|---:|:---
-Check | | 0:27
+| task  | schedule | spent | note |
+| ----- | -------- | ----- | ---- |
+| Check |          | 0:27  |      |
 
 [完了]
 
-task|schedule|spent|note
-:---|---:|---:|:---
-About FooBar | 1:30 | 1:53
+| task         | schedule | spent | note |
+| ------------ | -------- | ----- | ---- |
+| About FooBar | 1:30     | 1:53  |      |
 
 ## Misc
 [完了]
 
-task|schedule|spent|note
-:---|---:|---:|:---
-Foo Foo | | 0:07
+| task    | schedule | spent | note |
+| ------- | -------- | ----- | ---- |
+| Foo Foo |          | 0:07  |      |
 ```
 
 ### Requirements
