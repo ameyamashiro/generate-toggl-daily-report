@@ -38,5 +38,5 @@ if (!targetDate.match(/[\d]{4}-[\d]{2}-[\d]{2}/)) {
 }
 
 require('./daily-report')(targetDate, token).catch(e => {
-  throw e
+  console.log('Error', e.message)
 })
