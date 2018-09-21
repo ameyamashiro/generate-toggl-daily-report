@@ -26,7 +26,7 @@ this generates a daily report table for markdown like the follwing.
 
 ### Requirements
 
-node (development version is 10.9.0)
+node (currently v8 or later is required, development version is 10.9.0)
 
 ## How to use
 
